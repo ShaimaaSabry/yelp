@@ -1,0 +1,38 @@
+services:
+
+  local_postgres:
+    image: postgres
+    ports:
+      - "4444:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: yelp_local
+    volumes:
+      - local-postgres:/var/lib/postgresql/data
+
+#  test_postgres:
+#    image: postgres
+#    ports:
+#      - "4444:5432"
+#    environment:
+#      POSTGRES_USER: postgres
+#      POSTGRES_PASSWORD: postgres
+#      POSTGRES_DB: yelp_test
+
+  localstack:
+    image: localstack/localstack
+    environment:
+      - DEBUG=1
+      - SERVICES=s3,lambda,sqs
+      - LAMBDA_EXECUTOR=docker
+      - LAMBDA_REMOTE_DOCKER=false
+    ports:
+      - '4566:4566'
+    volumes:
+      - "${LOCALSTACK_VOLUME_DIR:-./tmp/.localstack_volume}:/var/lib/localstack"
+      - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  local-postgres:
+    driver: local

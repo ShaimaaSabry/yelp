@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:4444/yelp_local
+    username: postgres
+    password: postgres
