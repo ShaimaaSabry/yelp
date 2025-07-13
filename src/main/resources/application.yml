@@ -1,0 +1,28 @@
+spring:
+  profiles:
+    active: local
+#  autoconfigure:
+#    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  datasource:
+    initializationMode: always
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#    hibernate:
+#      naming:
+#        implicit-strategy: "org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl"
+#        physical-strategy: "org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl"
+
+  config:
+    aws:
+      region: us-east-1
+      s3:
+        url: http://127.0.0.1:4566
+        bucket-name: dandelion-s3-bucket
+        access-key: localstack
+        secret-key: localstack
+
+gateways:
+  openai:
+    url: https://api.openai.com
+    apiKey: ${OPENAI_API_KEY}

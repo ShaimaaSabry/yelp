@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:4444/yelp
+    username: postgres
+    password: postgres
+
+logging:
+  level:
+    shaimaa.yelp: DEBUG

@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    initializationMode: always
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:4444/yelp_test
+    username: postgres
+    password: postgres
+  jpa:
+    databasePlatform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      naming:
+        implicit-strategy: "org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl"
+        physical-strategy: "org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl"
+
+  config:
+    aws:
+      region: us-east-1
+      s3:
+        url: http://127.0.0.1:4566
+        bucket-name: dandelion-s3-bucket
+        access-key: localstack
+        secret-key: localstack
